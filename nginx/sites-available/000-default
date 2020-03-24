@@ -1,0 +1,21 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+    # return 404;
+    return 302 https://www.alexandre-hublau.com;
+}
+
+server {
+    listen 443 default_server;
+    listen [::]:443 default_server;
+
+    ssl on;
+    ssl_certificate /etc/letsencrypt/live/alexandre-hublau.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/alexandre-hublau.com/privkey.pem;
+
+    server_name _;
+    # return 404;
+    return 302 https://www.alexandre-hublau.com;
+}
